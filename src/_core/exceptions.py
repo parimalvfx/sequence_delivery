@@ -15,3 +15,13 @@ class InvalidImageNameError(SequenceDeliveryBaseException):
     """
     def __init__(self, message) -> None:
         self.message = message
+
+
+class DataIntegrityError(SequenceDeliveryBaseException):
+    """Exception to raise when the data of two sources does not match.
+
+    :param message: Message to show when exception is raised.
+    :rtype message: str
+    """
+    def __init__(self, message) -> None:
+        self.message = message

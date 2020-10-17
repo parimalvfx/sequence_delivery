@@ -4,8 +4,8 @@ image of image sequence.
 import os
 import re
 
-import utils
-import exceptions as custom_exceptions
+from _core import exceptions as custom_exceptions
+from _core import utils
 
 
 class ImageFile:
@@ -74,7 +74,8 @@ class ImageFile:
 
         if len(units) != 5:
             raise custom_exceptions.SequenceDeliveryBaseException(
-                "Image name {0} does not meet the convention length of 5"
+                "Image name {0} does not meet the convention length of " \
+                    "5".format(basename)
             )
 
         return tuple(units)
@@ -86,6 +87,15 @@ class ImageFile:
         :rtype: str
         """
         return utils.generate_file_hash(self._source)
+
+    @property
+    def basename(self):
+        """Basename of this image.
+
+        :return: Image basename.
+        :rtype: str
+        """
+        return os.path.basename(self._source)
 
     @property
     def project_name(self):
