@@ -66,6 +66,8 @@ class ImageFile:
     def _parse_basename(self):
         """Method to parse basename as per naming convention.
 
+        :raises _core.exceptions.SequenceDeliveryBaseException: If image name
+            does not meet naming convention.
         :return: Tuple of separated name units.
         :rtype: tuple
         """

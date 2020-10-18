@@ -1,3 +1,5 @@
+"""Module containing the main function to run sequence delivery tool.
+"""
 import os
 import sys
 
@@ -11,6 +13,8 @@ from _tool import model, view, controller
 
 
 def main():
+    """Main function to run MVC together.
+    """
     app = QtWidgets.QApplication(sys.argv)
     sd_model = model.SequenceDeliveryModel()
     sd_controller = controller.SequenceDeliveryController(sd_model)
@@ -18,5 +22,4 @@ def main():
     sd_view.show()
     sys.exit(app.exec_())
 
-# if __name__ == "main":
 main()

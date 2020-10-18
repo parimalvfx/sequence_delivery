@@ -3,19 +3,11 @@
 from datetime import datetime
 import os
 import shutil
-import sys
 
 import fileseq
 
-# Set `src` directory to  `PYTHONPATH` on runtime
-# _core_path = os.path.normpath(
-#     os.path.join(os.path.dirname(__file__), "../../src")
-# )
-# sys.path.append(_core_path)
-
 from _core import exceptions as custom_exceptions
 from _core import image_file
-# from _tool import model
 
 
 class SequenceDeliveryController:
@@ -67,6 +59,9 @@ class SequenceDeliveryController:
     def move_sequences(self):
         """Method to move all image sequences from source directories to
         destination directory.
+
+        :raises _core.exceptions.DataIntegrityError: If the data of moved image
+            file does not match with the original image.
         """
         all_sequences = self._find_sequences_on_disk()
 
@@ -87,14 +82,3 @@ class SequenceDeliveryController:
                         "Moved image does not match with source image: " \
                         "{0} (source) != {1} (destination)".format(
                             image, delivery_path))
-
-
-# sdm = model.SequenceDeliveryModel()
-# sdm.source_directories = [
-#     "C:\\Users\\Parimal\\Desktop\\redesign\\03_code_architecture\\data\\delivery01",
-#     "C:\\Users\\Parimal\\Desktop\\redesign\\03_code_architecture\\data\\delivery02"
-# ]
-# sdm.destinaion_directory = "C:\\Users\\Parimal\\Desktop\\redesign\\03_code_architecture\\data"
-
-# sdc = SequenceDeliveryController(sdm)
-# sdc._move_sequences()

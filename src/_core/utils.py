@@ -16,4 +16,5 @@ def generate_file_hash(source):
         while len(buffer) > 0:
             md5.update(buffer)
             buffer = source_handler.read(block_size)
+
     return md5.hexdigest()

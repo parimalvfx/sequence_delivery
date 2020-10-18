@@ -51,7 +51,7 @@ class SequenceDeliveryView(QtWidgets.QWidget):
         for layout in (source_layout, destination_layout, button_layout):
             master_layout.addLayout(layout)
         self.setLayout(master_layout)
-        self.setWindowTitle("Sequence Delivery Tool")
+        self.setWindowTitle("Sequence Delivery Tool v1.0.0")
         self.setMinimumWidth(700)
         self.setFixedHeight(140)
 

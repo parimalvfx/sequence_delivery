@@ -27,6 +27,7 @@ class SequenceDeliveryModel:
 
         :param directories: Source directories to set.
         :type directories: list
+        :raises ValueError: If given source directories is not a list.
         """
         if not isinstance(directories, list):
             raise ValueError
@@ -48,6 +49,7 @@ class SequenceDeliveryModel:
 
         :param directory: Destination directory to set.
         :type directory: str
+        :raises ValueError: If given destination directory is not a string.
         """
         if not isinstance(directory, str):
             raise ValueError
