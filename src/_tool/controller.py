@@ -62,6 +62,8 @@ class SequenceDeliveryController:
 
         :raises _core.exceptions.DataIntegrityError: If the data of moved image
             file does not match with the original image.
+        :return: Returns True if all image sequences are moved without any error.
+        :rtype: bool
         """
         all_sequences = self._find_sequences_on_disk()
 
@@ -82,3 +84,5 @@ class SequenceDeliveryController:
                         "Moved image does not match with source image: " \
                         "{0} (source) != {1} (destination)".format(
                             image, delivery_path))
+
+        return True

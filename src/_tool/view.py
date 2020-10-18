@@ -14,6 +14,7 @@ class SequenceDeliveryView(QtWidgets.QWidget):
     def __init__(self, controller, parent=None) -> None:
         super().__init__(parent=parent)
         self._controller = controller
+        self._title = "Sequence Delivery Tool v1.0.0"
         self._build_ui()
         self._connect_signals()
 
@@ -51,7 +52,7 @@ class SequenceDeliveryView(QtWidgets.QWidget):
         for layout in (source_layout, destination_layout, button_layout):
             master_layout.addLayout(layout)
         self.setLayout(master_layout)
-        self.setWindowTitle("Sequence Delivery Tool v1.0.0")
+        self.setWindowTitle(self._title)
         self.setMinimumWidth(700)
         self.setFixedHeight(140)
 
@@ -97,6 +98,15 @@ class SequenceDeliveryView(QtWidgets.QWidget):
         """
         self.setCursor(QtCore.Qt.WaitCursor)
         self.cancel_button.setDisabled(True)
-        self._controller.move_sequences()
+        sequences_moved = self._controller.move_sequences()
         self.cancel_button.setEnabled(True)
         self.unsetCursor()
+
+        if sequences_moved:
+            QtWidgets.QMessageBox.information(
+                self,
+                self._title,
+                "Success!\nAll source image sequences are sorted and " \
+                "formatted to the destination directory."
+            )
+            self.close()
